@@ -1,34 +1,33 @@
 name: Basic workflow
 
-on: 
-    push: 
-      branches: [main]
-      paths:  
-       -"**.js"
-       -"package*.json"
-    pull_request:
-     branches: [main]
-     paths:
-      -"**.js"
-      -"package*.json"
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.js"
+      - "package*.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - "**.js"
+      - "package*.json"
 
-jobs: 
+jobs:
   test:
-     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  
-     steps:
-       - name: Checkout repository
-         uses: actions/checkout@v4     
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-       - name: Setup node.js
-         uses: actions/setup-node@v4        
-         with:  
-           node-vesrion: "20"
-           cache: "npm"
+      - name: Setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-       - name: Install dependencies 
-         run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-       - name: Run tests
-         run: npm test         
+      - name: Run tests
+        run: npm test
